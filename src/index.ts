@@ -11,13 +11,13 @@ export const sketch = (p: p5) => {
   );
 
   const generateClockwiseVertices = (x: number, y: number): Array<number[]> => {
-    const getHeight = (): number => getRandomInt(2, 10);
-    const getWidth = (): number => getRandomInt(0, 4);
+    const getXVal = (): number => getRandomInt(0, 4);
+    const getYVal = (): number => getRandomInt(0, 10);
 
-    const v1 = [x - getWidth(), y - getHeight()];
-    const v2 = [x + getWidth(), y - getHeight()];
-    const v3 = [x + getWidth(), y + getHeight()];
-    const v4 = [x - getWidth(), y + getHeight()];
+    const v1 = [x - getXVal(), y - getYVal()];
+    const v2 = [x + getXVal(), y - getYVal()];
+    const v3 = [x + getXVal(), y + getYVal()];
+    const v4 = [x - getXVal(), y + getYVal()];
     return [v1, v2, v3, v4];
   };
 
@@ -69,12 +69,18 @@ export const sketch = (p: p5) => {
     p.fill(230);
   };
 
+  const getRealMouseCoords = (e: MouseEvent): [number, number] => (
+    [e.clientX - (imageWidth / 2), e.clientY - (imageHeight / 2)]
+  );
+
+  const drawAtMousePos = (e: MouseEvent) => {
+    const [x, y] = getRealMouseCoords(e);
+    draw(x,y);
+  };
+
   p.draw = () => {
-    p.mouseDragged = (e: MouseEvent) => {
-      const realMouseX = e.clientX - (imageWidth / 2);
-      const realMouseY = e.clientY - imageHeight / 2;
-      draw(realMouseX, realMouseY);
-    };
+    p.mouseDragged = drawAtMousePos;
+    p.mousePressed = drawAtMousePos;
   };
 };
 

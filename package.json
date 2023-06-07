@@ -11,7 +11,8 @@
   "author": "Kevin Boyle",
   "license": "ISC",
   "dependencies": {
-    "p5": "^1.6.0"
+    "p5": "^1.6.0",
+    "short-unique-id": "^4.4.4"
   },
   "devDependencies": {
     "@types/p5": "^1.6.2",

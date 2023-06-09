@@ -28,9 +28,6 @@ export const sketch = (p: p5) => {
     p.createCanvas(imageWidth, imageHeight, p.WEBGL);
     drawBackground();
 
-    const almostWhite = 230;
-    p.fill(almostWhite);
-
     eraseModeToggleButton = p.createButton('erase').mousePressed(() => {
       isEraseMode = !isEraseMode;
       eraseModeToggleButton.html(isEraseMode ? 'draw' : 'erase');

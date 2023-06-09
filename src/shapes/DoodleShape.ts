@@ -38,6 +38,7 @@ export class DoodleShape {
 
   display = () => {
     if (this.shouldHide) return;
+
     this.dotAndSpeck.display();
     this.squigglyQuad.display();
   };

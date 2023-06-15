@@ -20,7 +20,7 @@ h1 {
   margin-top: 0;
   margin-bottom: 20px;
   letter-spacing: 0.5px;
-  text-shadow: 2px 2px 2px #171717;
+  text-shadow: 2px 2px 2px #171717b6;
 }
 
 .p5Canvas {
@@ -36,4 +36,31 @@ h1 {
   cursor: default;
   touch-action: none;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.eraseModeToggleButton {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-radius: 4px;
+  width: 100px;
+  padding: 10px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: #ececec;
+  background-color: rgb(215, 0, 0);
+  border: 0.5px solid #151515;
+  box-shadow: -4px 4px 0px #393838;
+  outline: none;
+  cursor: pointer;
+  touch-action: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  &:hover {
+    background-color: rgb(255, 0, 0);
+    border: 0.5px solid #340000;
+    box-shadow: -4px 4px 0px #393838ce;
+  }
 }

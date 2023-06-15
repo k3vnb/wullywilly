@@ -28,10 +28,12 @@ export const sketch = (p: p5) => {
     p.createCanvas(imageWidth, imageHeight, p.WEBGL);
     drawBackground();
 
-    eraseModeToggleButton = p.createButton('erase').mousePressed(() => {
-      isEraseMode = !isEraseMode;
-      eraseModeToggleButton.html(isEraseMode ? 'draw' : 'erase');
-    });
+    eraseModeToggleButton = p.createButton('erase')
+      .addClass('eraseModeToggleButton')
+      .mousePressed(() => {
+        isEraseMode = !isEraseMode;
+        eraseModeToggleButton.html(isEraseMode ? 'draw' : 'erase');
+      });
   };
 
   const drawAtMousePos = () => {

@@ -1,6 +1,6 @@
 import * as p5 from 'p5';
 import { DoodleShape } from './shapes';
-import { getRealMouseCoords, getUid } from './utils';
+import { getRealMouseCoords } from './utils';
 import {
   WHITE,
   START_X,
@@ -12,7 +12,6 @@ import {
 
 export const sketch = (p: p5) => {
   let bg: p5.Image | undefined;
-  let groupId: string;
   let isEraseMode = false;
   let eraseModeToggleButton: p5.Element;
 
@@ -43,16 +42,7 @@ export const sketch = (p: p5) => {
 
   const drawAtMousePos = () => {
     const [x, y] = getRealMouseCoords(p);
-    if (!isEraseMode) {
-      const doodleShape = new DoodleShape({ x, y, groupId, p });
-      newShapes.push(doodleShape);
-      newShapes.forEach((shape) => shape.display());
-    } else {
-      p.loop();
-      shapes.forEach((shape) => {
-        if (shape.isHovered(x, y, p)) shape.setHide(true);
-      });
-    }
+    const doodleShape = new DoodleShape({ x, y, p });
   };
 
   const removeHiddenShapes = () => {
@@ -63,7 +53,6 @@ export const sketch = (p: p5) => {
 
   p.mouseDragged = drawAtMousePos;
   p.mousePressed = () => {
-    groupId = getUid();
     drawAtMousePos();
   };
   p.mouseReleased = () => {

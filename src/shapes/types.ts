@@ -3,7 +3,3 @@ export interface IShapeBase {
   y: number;
   p: p5;
 }
-
-export interface IDoodleShape extends IShapeBase {
-  groupId: string;
-}

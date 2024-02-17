@@ -1,5 +1,6 @@
 import * as p5 from 'p5';
 import ShortUniqueId from 'short-unique-id';
+import { IMAGE_HEIGHT, IMAGE_WIDTH } from './constants';
 
 interface P {
   p: p5;
@@ -20,11 +21,6 @@ interface IGenerateClockwiseVertices extends P {
   y: number;
 }
 
-interface IGetRealMouseCoords extends P {
-  imageHeight: number;
-  imageWidth: number;
-}
-
 export const getRandomInt = ({ min, max, p}: IGetRandomInt): number => (
   p.int(p.random(min, max))
 );
@@ -42,8 +38,8 @@ export const generateClockwiseVertices = ({ x, y, p }: IGenerateClockwiseVertice
   return [v1, v2, v3, v4];
 };
 
-export const getRealMouseCoords = ({ imageHeight, imageWidth, p }: IGetRealMouseCoords): [number, number] => (
-  [p.mouseX - (imageWidth / 2), p.mouseY - (imageHeight / 2)]
+export const getRealMouseCoords = (p: p5): [number, number] => (
+  [p.mouseX - (IMAGE_WIDTH / 2), p.mouseY - (IMAGE_HEIGHT / 2)]
 );
 
 export const getUid = (): string => {

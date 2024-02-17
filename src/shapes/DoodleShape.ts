@@ -3,7 +3,7 @@ import * as p5 from 'p5';
 import { DotAndSpeck } from './DotAndSpeck';
 import { SquigglyQuad } from './SquigglyQuad';
 
-import { getUid } from '../util';
+import { getUid } from '../utils';
 import type { IDoodleShape } from './types';
 
 const threshold = 20;

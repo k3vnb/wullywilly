@@ -1,9 +1,7 @@
 import * as p5 from 'p5';
 import { DoodleShape } from './shapes';
-import { getRealMouseCoords, getUid } from './util';
-
-const imageWidth = 540;
-const imageHeight = imageWidth;
+import { getRealMouseCoords, getUid } from './utils';
+import { GRID_SIZE, IMAGE_HEIGHT, IMAGE_WIDTH } from './constants';
 
 export const sketch = (p: p5) => {
   let bg: p5.Image | undefined;
@@ -21,11 +19,11 @@ export const sketch = (p: p5) => {
   const drawBackground = () => {
     p.background(255);
     p.imageMode(p.CENTER);
-    if (bg) p.image(bg, 0, 0, imageWidth, imageHeight);
+    if (bg) p.image(bg, 0, 0, IMAGE_WIDTH, IMAGE_HEIGHT);
   };
 
   p.setup = () => {
-    p.createCanvas(imageWidth, imageHeight, p.WEBGL);
+    p.createCanvas(IMAGE_WIDTH, IMAGE_HEIGHT, p.WEBGL);
     drawBackground();
 
     eraseModeToggleButton = p.createButton('erase')
@@ -37,7 +35,7 @@ export const sketch = (p: p5) => {
   };
 
   const drawAtMousePos = () => {
-    const [x, y] = getRealMouseCoords({ p, imageHeight, imageWidth });
+    const [x, y] = getRealMouseCoords(p);
     if (!isEraseMode) {
       const doodleShape = new DoodleShape({ x, y, groupId, p });
       newShapes.push(doodleShape);

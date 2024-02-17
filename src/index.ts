@@ -15,8 +15,9 @@ export const sketch = (p: p5) => {
   let isEraseMode = false;
   let eraseModeToggleButton: p5.Element;
 
-  const shapes: DoodleShape[] = [];
   const newShapes: DoodleShape[] = [];
+  let shapes: DoodleShape[] = [];
+  const grid: Array<Array<DoodleShape[]>> = [];
 
   p.preload = () => {
     bg = p.loadImage('./assets/woolywilly.svg');
@@ -40,21 +41,49 @@ export const sketch = (p: p5) => {
       });
   };
 
+  const addToGrid = (shape: DoodleShape) => {
+    const { gridCellX, gridCellY } = shape;
+    if (!grid[gridCellX]) grid[gridCellX] = [];
+    if (!grid[gridCellX][gridCellY]) grid[gridCellX][gridCellY] = [];
+    grid[gridCellX][gridCellY].push(shape);
+  };
+
+  const getShapesInGridCell = (x: number, y: number): DoodleShape[] => {
+    const gridCellX = Math.floor(x / GRID_SIZE);
+    const gridCellY = Math.floor(y / GRID_SIZE);
+    return grid[gridCellX]?.[gridCellY] || [];
+  };
+
+  const eraseAtMousePos = (x: number, y: number) => {
+    p.loop();
+    const shapesInCell = getShapesInGridCell(x, y);
+    shapesInCell.forEach((shape) => {
+      if (shape.isHovered(x, y, p)) shape.setHide(true);
+    });
+  };
+
   const drawAtMousePos = () => {
     const [x, y] = getRealMouseCoords(p);
+
+    if (isEraseMode) return eraseAtMousePos(x, y);
+
     const doodleShape = new DoodleShape({ x, y, p });
+    doodleShape.display();
+    newShapes.push(doodleShape);
+    addToGrid(doodleShape);
+    newShapes.forEach((shape) => shape.display());
   };
 
   const removeHiddenShapes = () => {
-    for (let i = shapes.length - 1; i >= 0; i--) {
-      if (shapes[i].isHidden()) shapes.splice(i, 1);
-    }
+    shapes = shapes.filter((shape) => !shape.isHidden());
   };
 
   p.mouseDragged = drawAtMousePos;
+
   p.mousePressed = () => {
     drawAtMousePos();
   };
+
   p.mouseReleased = () => {
     if (isEraseMode) removeHiddenShapes();
     if (newShapes.length) shapes.push(...newShapes);

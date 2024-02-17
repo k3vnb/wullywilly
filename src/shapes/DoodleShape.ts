@@ -6,7 +6,8 @@ import { SquigglyQuad } from './SquigglyQuad';
 import { getUid } from '../utils';
 import type { IDoodleShape } from './types';
 
-const threshold = 20;
+const HOVERED_THRESHOLD = 20;
+
 export class DoodleShape {
   id: string;
   groupId: string;
@@ -27,7 +28,7 @@ export class DoodleShape {
 
   isHovered = (mouseX: number, mouseY: number, p: p5) => {
     const d = p.dist(mouseX, mouseY, this.x, this.y);
-    return d < threshold;
+    return d < HOVERED_THRESHOLD;
   };
 
   isHidden = () => this.shouldHide;

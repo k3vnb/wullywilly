@@ -2,7 +2,7 @@ import * as p5 from 'p5';
 import { getRandomInt, getShadeOfGray, generateClockwiseVertices } from '../utils';
 import type { IShapeBase } from './types';
 
-const almostWhite = 230;
+const ALMOST_WHITE = 230;
 
 export class SquigglyQuad {
   x: number;
@@ -23,7 +23,7 @@ export class SquigglyQuad {
     this.p.stroke(this.color);
     this.p.strokeWeight(this.strokeWeight);
     this.p.point(this.x, this.y);
-    this.p.fill(almostWhite);
+    this.p.fill(ALMOST_WHITE);
     const [x1, y1, x2, y2, x3, y3, x4, y4] = this.vertices.flat();
     this.p.quad(x1, y1, x2, y2, x3, y3, x4, y4);
   };

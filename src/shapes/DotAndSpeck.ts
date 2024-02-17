@@ -2,12 +2,15 @@ import * as p5 from 'p5';
 import { getRandomInt, getShadeOfGray, generateClockwiseVertices } from '../utils';
 import type { IShapeBase } from './types';
 
+const DOT_RADIUS = 3;
+const SPECK_RADIUS = 2;
+
 export class DotAndSpeck {
   x: number;
   y: number;
   p: p5;
-  dotRadius = 3;
-  speckRadius = 2;
+  dotRadius = DOT_RADIUS;
+  speckRadius = SPECK_RADIUS;
   dotColor: number;
   speckColor: number;
   speckCoord: number[];

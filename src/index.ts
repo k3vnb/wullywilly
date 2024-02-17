@@ -1,7 +1,14 @@
 import * as p5 from 'p5';
 import { DoodleShape } from './shapes';
 import { getRealMouseCoords, getUid } from './utils';
-import { GRID_SIZE, IMAGE_HEIGHT, IMAGE_WIDTH } from './constants';
+import {
+  WHITE,
+  START_X,
+  START_Y,
+  GRID_SIZE,
+  IMAGE_HEIGHT,
+  IMAGE_WIDTH,
+} from './constants';
 
 export const sketch = (p: p5) => {
   let bg: p5.Image | undefined;
@@ -17,9 +24,9 @@ export const sketch = (p: p5) => {
   };
 
   const drawBackground = () => {
-    p.background(255);
+    p.background(WHITE);
     p.imageMode(p.CENTER);
-    if (bg) p.image(bg, 0, 0, IMAGE_WIDTH, IMAGE_HEIGHT);
+    if (bg) p.image(bg, START_X, START_Y, IMAGE_WIDTH, IMAGE_HEIGHT);
   };
 
   p.setup = () => {

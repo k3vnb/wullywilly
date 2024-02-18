@@ -2,7 +2,6 @@ import * as p5 from 'p5';
 import { DotAndSpeck } from './DotAndSpeck';
 import { SquigglyQuad } from './SquigglyQuad';
 import { getUid } from '../utils';
-import { GRID_SIZE } from '../constants';
 import type { IShapeBase } from './types';
 
 const HOVERED_THRESHOLD = 20;
@@ -21,8 +20,6 @@ export class DoodleShape {
     this.id = getUid();
     this.x = x;
     this.y = y;
-    this.gridCellX = p.floor(x / GRID_SIZE);
-    this.gridCellY = p.floor(y / GRID_SIZE);
 
     this.dotAndSpeck = new DotAndSpeck({ x, y, p });
     this.squigglyQuad = new SquigglyQuad({ x, y, p });

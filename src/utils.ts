@@ -27,9 +27,11 @@ export const getRandomInt = ({ min, max, p}: IGetRandomInt): number => (
 
 export const getShadeOfGray = ({ min = 0, max = 25, p }: IGetShadeOfGray): number => getRandomInt({ min, max, p });
 
+const REDUCE_BY = 0.9;
+
 export const generateClockwiseVertices = ({ x, y, p }: IGenerateClockwiseVertices): Array<number[]> => {
-  const getXVal = (): number => getRandomInt({ min: 0, max: 4, p });
-  const getYVal = (): number => getRandomInt({ min: 0, max: 10, p });
+  const getXVal = (): number => getRandomInt({ min: 1, max: 5, p }) - REDUCE_BY;
+  const getYVal = (): number => getRandomInt({ min: 1, max: 10, p });
 
   const v1 = [x - getXVal(), y - getYVal()];
   const v2 = [x + getXVal(), y - getYVal()];

@@ -71,10 +71,8 @@ export const sketch = (p: p5) => {
 
     if (isEraseMode) return eraseAtMousePos(x, y);
 
-    const doodleShape = new DoodleShape({ x, y, p });
-    doodleShape.display();
-    qtree.insert(doodleShape);
-    shapesCache.push(doodleShape);
+    const doodleShape = qtree.createShape(x, y);
+    if (doodleShape) shapesCache.push(doodleShape);
   };
 
   const cleanup = () => {
@@ -106,7 +104,7 @@ export const sketch = (p: p5) => {
   };
 
   p.draw = () => {
-    drawBackground(); // re-render the background to avoid stale shapes from prev render being drawn on top of new renderings
+    drawBackground(); // re-render the background to hide stale shapes from prev render
     qtree.show(); // draw the quadtree, which contains all the shapes
     p.noLoop();
   };

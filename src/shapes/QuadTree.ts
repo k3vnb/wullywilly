@@ -1,7 +1,7 @@
 import { DoodleShape } from './DoodleShape';
 import { IS_DEBUG_MODE } from '../constants';
 
-const QUAD_CAPACITY = 10;
+const QUAD_CAPACITY = 20; // max number of shapes in a quad
 
 export class Rectangle {
   x: number;
@@ -113,6 +113,13 @@ export class QuadTree {
       }
     }
     return found;
+  }
+
+  createShape(x: number, y: number) {
+    const newShape = new DoodleShape({ x, y, p: this.p });
+    newShape.display();
+    this.insert(newShape);
+    return newShape;
   }
 
   show() {

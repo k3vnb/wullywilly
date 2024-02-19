@@ -1,13 +1,11 @@
 import * as p5 from 'p5';
 import { DotAndSpeck } from './DotAndSpeck';
 import { SquigglyQuad } from './SquigglyQuad';
-import { getUid } from '../utils';
 import type { IShapeBase } from './types';
 
 const HOVERED_THRESHOLD = 20;
 
 export class DoodleShape {
-  id: string;
   dotAndSpeck: DotAndSpeck;
   squigglyQuad: SquigglyQuad;
   x: number;
@@ -17,7 +15,6 @@ export class DoodleShape {
   shouldHide = false;
 
   constructor({ x, y, p }: IShapeBase) {
-    this.id = getUid();
     this.x = x;
     this.y = y;
     this.dotAndSpeck = new DotAndSpeck({ x, y, p }); // adds texture to shape

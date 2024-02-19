@@ -72,25 +72,25 @@ export class QuadTree {
     this.divided = true;
   }
 
-  insert(point: DoodleShape) {
-    if (!this.boundary.contains(point)) {
+  insert(shape: DoodleShape) {
+    if (!this.boundary.contains(shape)) {
       return false;
     }
 
     if (this.shapes.length < QUAD_CAPACITY) {
-      this.shapes.push(point);
+      this.shapes.push(shape);
       return true;
     } else {
       if (!this.divided) {
         this.subdivide();
       }
-      if (this.northeast.insert(point)) {
+      if (this.northeast.insert(shape)) {
         return true;
-      } else if (this.northwest.insert(point)) {
+      } else if (this.northwest.insert(shape)) {
         return true;
-      } else if (this.southeast.insert(point)) {
+      } else if (this.southeast.insert(shape)) {
         return true;
-      } else if (this.southwest.insert(point)) {
+      } else if (this.southwest.insert(shape)) {
         return true;
       }
     }

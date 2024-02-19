@@ -20,9 +20,8 @@ export class DoodleShape {
     this.id = getUid();
     this.x = x;
     this.y = y;
-
-    this.dotAndSpeck = new DotAndSpeck({ x, y, p });
-    this.squigglyQuad = new SquigglyQuad({ x, y, p });
+    this.dotAndSpeck = new DotAndSpeck({ x, y, p }); // adds texture to shape
+    this.squigglyQuad = new SquigglyQuad({ x, y, p }); // main shape
   }
 
   isHovered = (mouseX: number, mouseY: number, p: p5) => {

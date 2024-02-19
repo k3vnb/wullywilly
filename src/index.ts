@@ -16,7 +16,8 @@ export const sketch = (p: p5) => {
   let qtree: QuadTree;
   let isEraseMode = false;
   let eraseModeToggleButton: p5.Element;
-  // const shapesToBeRemoved: Record<string, boolean> = {};
+  let shapes: DoodleShape[] = [];
+  let shouldCleanUp = false;
 
   p.preload = () => {
     bg = p.loadImage('./assets/woolywilly.svg');
@@ -33,7 +34,7 @@ export const sketch = (p: p5) => {
     drawBackground();
     const boundary = new Rectangle(-IMAGE_WIDTH/2, -IMAGE_HEIGHT/2, IMAGE_WIDTH, IMAGE_HEIGHT);
 
-    qtree = new QuadTree(boundary, 4, p);
+    qtree = new QuadTree(boundary, 10, p);
 
     eraseModeToggleButton = p.createButton('erase')
       .addClass('eraseModeToggleButton')
@@ -55,7 +56,7 @@ export const sketch = (p: p5) => {
     shapesInRange.forEach((shape) => {
       if (shape.isHovered(x, y, p)) {
         shape.setHide(true);
-        // shapesToBeRemoved[shape.id] = true;
+        shouldCleanUp = true;
       }
     });
   };
@@ -68,6 +69,22 @@ export const sketch = (p: p5) => {
     const doodleShape = new DoodleShape({ x, y, p });
     doodleShape.display();
     qtree.insert(doodleShape);
+    shapes.push(doodleShape);
+  };
+
+  const cleanup = () => {
+    const shapesCount = shapes.length;
+    shapes = shapes.filter((shape) => !shape.isHidden());
+    const shouldCleanShapes = shapesCount !== shapes.length;
+    if (shouldCleanShapes) {
+      const newQtree = new QuadTree(qtree.boundary, 10, p);
+      shapes = shapes.filter((shape) => !shape.isHidden());
+      shapes.forEach((shape) => {
+        newQtree.insert(shape);
+      });
+      qtree = newQtree;
+    }
+    shouldCleanUp = false;
   };
 
   p.mouseDragged = drawAtMousePos;
@@ -78,6 +95,7 @@ export const sketch = (p: p5) => {
 
   p.mouseReleased = () => {
     if (IS_DEBUG_MODE) qtree.show();
+    if (shouldCleanUp) cleanup();
   };
 
   p.draw = () => {

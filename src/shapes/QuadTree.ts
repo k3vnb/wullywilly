@@ -1,6 +1,8 @@
 import { DoodleShape } from './DoodleShape';
 import { IS_DEBUG_MODE } from '../constants';
 
+const QUAD_CAPACITY = 10;
+
 export class Rectangle {
   x: number;
   y: number;
@@ -36,7 +38,6 @@ export class Rectangle {
 export class QuadTree {
   p: p5;
   boundary: Rectangle;
-  capacity: number;
   shapes: DoodleShape[];
   divided: boolean;
   northeast: QuadTree;
@@ -44,9 +45,8 @@ export class QuadTree {
   southeast: QuadTree;
   southwest: QuadTree;
 
-  constructor(boundary: Rectangle, n: number, p: p5) {
+  constructor(boundary: Rectangle, p: p5) {
     this.boundary = boundary;
-    this.capacity = n;
     this.shapes = [];
     this.divided = false;
     this.p = p;
@@ -58,14 +58,17 @@ export class QuadTree {
     const w = this.boundary.w;
     const h = this.boundary.h;
 
-    const ne = new Rectangle(x + w / 2, y - h / 2, w / 2, h / 2);
-    this.northeast = new QuadTree(ne, this.capacity, this.p);
-    const nw = new Rectangle(x - w / 2, y - h / 2, w / 2, h / 2);
-    this.northwest = new QuadTree(nw, this.capacity, this.p);
-    const se = new Rectangle(x + w / 2, y + h / 2, w / 2, h / 2);
-    this.southeast = new QuadTree(se, this.capacity, this.p);
-    const sw = new Rectangle(x - w / 2, y + h / 2, w / 2, h / 2);
-    this.southwest = new QuadTree(sw, this.capacity, this.p);
+    const halfW = w / 2;
+    const halfH = h / 2;
+
+    const ne = new Rectangle(x + halfW, y - halfH, halfW, halfH);
+    this.northeast = new QuadTree(ne, this.p);
+    const nw = new Rectangle(x - halfW, y - halfH, halfW, halfH);
+    this.northwest = new QuadTree(nw, this.p);
+    const se = new Rectangle(x + halfW, y + halfH, halfW, halfH);
+    this.southeast = new QuadTree(se, this.p);
+    const sw = new Rectangle(x - halfW, y + halfH, halfW, halfH);
+    this.southwest = new QuadTree(sw, this.p);
     this.divided = true;
   }
 
@@ -74,7 +77,7 @@ export class QuadTree {
       return false;
     }
 
-    if (this.shapes?.length < this.capacity) {
+    if (this.shapes.length < QUAD_CAPACITY) {
       this.shapes.push(point);
       return true;
     } else {

@@ -34,7 +34,7 @@ export const sketch = (p: p5) => {
     drawBackground();
     const boundary = new Rectangle(-IMAGE_WIDTH/2, -IMAGE_HEIGHT/2, IMAGE_WIDTH, IMAGE_HEIGHT);
 
-    qtree = new QuadTree(boundary, 10, p);
+    qtree = new QuadTree(boundary, p);
 
     eraseModeToggleButton = p.createButton('erase')
       .addClass('eraseModeToggleButton')
@@ -77,7 +77,7 @@ export const sketch = (p: p5) => {
     shapes = shapes.filter((shape) => !shape.isHidden());
     const shouldCleanShapes = shapesCount !== shapes.length;
     if (shouldCleanShapes) {
-      const newQtree = new QuadTree(qtree.boundary, 10, p);
+      const newQtree = new QuadTree(qtree.boundary, p);
       shapes = shapes.filter((shape) => !shape.isHidden());
       shapes.forEach((shape) => {
         newQtree.insert(shape);

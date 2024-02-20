@@ -4,6 +4,7 @@ import { getRealMouseCoords } from './utils';
 
 import {
   WHITE,
+  IMG_SCALE,
   IMG_OFFSET_X,
   IS_DEBUG_MODE,
   CANVAS_MAX_WIDTH,
@@ -25,8 +26,8 @@ export const sketch = (p: p5) => {
   const drawBackground = () => {
     p.background(WHITE);
     p.imageMode(p.CENTER);
-    const width = p.round(p.width * 0.85);
-    const offset = p.round(IMG_OFFSET_X * 0.85);
+    const width = p.round(p.width * IMG_SCALE);
+    const offset = p.round(IMG_OFFSET_X * IMG_SCALE);
     if (bg) p.image(bg, offset, offset, width, width);
   };
 

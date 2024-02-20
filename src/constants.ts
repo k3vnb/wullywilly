@@ -1,7 +1,6 @@
-export const IMAGE_WIDTH = 540;
-export const IMAGE_HEIGHT = IMAGE_WIDTH;
+export const CANVAS_MAX_WIDTH = 580;
 export const WHITE = 255;
-export const START_X = 0;
-export const START_Y = 0;
+export const IMG_OFFSET_X = 4;
+export const IMG_OFFSET_Y = 4;
 export const IS_DEBUG_MODE = false;
-export const HOVER_QUERY_RANGE = 20;
+export const HOVER_THRESHOLD = 20;

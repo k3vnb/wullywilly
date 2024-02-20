@@ -1,5 +1,4 @@
 import * as p5 from 'p5';
-import { IMAGE_HEIGHT, IMAGE_WIDTH } from './constants';
 
 interface P {
   p: p5;
@@ -40,5 +39,5 @@ export const generateClockwiseVertices = ({ x, y, p }: IGenerateClockwiseVertice
 };
 
 export const getRealMouseCoords = (p: p5): [number, number] => (
-  [p.mouseX - (IMAGE_WIDTH / 2), p.mouseY - (IMAGE_HEIGHT / 2)]
+  [p.mouseX - (p.width / 2), p.mouseY - (p.height / 2)]
 );

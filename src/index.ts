@@ -4,11 +4,9 @@ import { getRealMouseCoords } from './utils';
 
 import {
   WHITE,
-  START_X,
-  START_Y,
-  IMAGE_HEIGHT,
-  IMAGE_WIDTH,
+  IMG_OFFSET_X,
   IS_DEBUG_MODE,
+  CANVAS_MAX_WIDTH,
 } from './constants';
 
 export const sketch = (p: p5) => {
@@ -26,6 +24,10 @@ export const sketch = (p: p5) => {
   const drawBackground = () => {
     p.background(WHITE);
     p.imageMode(p.CENTER);
+    const width = p.round(p.width * 0.85);
+    const offset = p.round(IMG_OFFSET_X * 0.85);
+    if (bg) p.image(bg, offset, offset, width, width);
+  };
 
   const createQuadtree = () => {
     const boundary = new Rectangle(-p.width/2, -p.height/2, p.width, p.height);
@@ -34,7 +36,8 @@ export const sketch = (p: p5) => {
 
   p.setup = () => {
     // init canvas
-    p.createCanvas(IMAGE_WIDTH, IMAGE_HEIGHT, p.WEBGL);
+    const width = Math.min(p.windowWidth, CANVAS_MAX_WIDTH);
+    p.createCanvas(width, width, p.WEBGL);
     drawBackground();
     createQuadtree();
 
@@ -45,6 +48,22 @@ export const sketch = (p: p5) => {
         isEraseMode = !isEraseMode;
         eraseModeToggleButton.html(isEraseMode ? 'draw' : 'erase');
       });
+  };
+
+  p.windowResized = () => {
+    const prevWidth = p.width;
+    const newWidth = Math.min(p.windowWidth, CANVAS_MAX_WIDTH);
+    p.resizeCanvas(newWidth, newWidth, true);
+
+    createQuadtree();
+
+    shapesCache = shapesCache.map((shape) => {
+      const x = (shape.x / prevWidth) * newWidth;
+      const y = (shape.y / prevWidth) * newWidth;
+      return qtree.createShape(x, y);
+    });
+
+    p.redraw();
   };
 
   const eraseAtMousePos = (x: number, y: number) => {

@@ -107,10 +107,8 @@ export class QuadTree {
     }
 
     for (const shape of this.shapes) {
-      const shouldHideShape = !shape.isHidden() && range.contains(shape) && shape.isHovered(x, y, this.p);
-      if (shouldHideShape) {
+      if (range.contains(shape)) {
         shape.setHide(true);
-        foundShapes.push(shape);
       }
     }
 

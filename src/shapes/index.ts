@@ -1,2 +1,2 @@
-export { DoodleShape } from './DoodleShape';
+export { DoodleShape } from './DoodleShape/DoodleShape';
 export { QuadTree, Rectangle } from './QuadTree';

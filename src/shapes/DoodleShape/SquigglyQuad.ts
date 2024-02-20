@@ -1,7 +1,8 @@
 import * as p5 from 'p5';
-import { ALMOST_WHITE } from '../constants';
-import { getRandomInt, getShadeOfGray, generateClockwiseVertices } from '../utils';
+import { getRandomInt, getShadeOfGray, generateClockwiseVertices } from '../../utils';
 import type { IShapeBase } from './types';
+
+const ALMOST_WHITE = 230;
 
 export class SquigglyQuad {
   x: number;

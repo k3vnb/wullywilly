@@ -1,5 +1,5 @@
 import * as p5 from 'p5';
-import { getRandomInt, getShadeOfGray, generateClockwiseVertices } from '../utils';
+import { getRandomInt, getShadeOfGray, generateClockwiseVertices } from '../../utils';
 import type { IShapeBase } from './types';
 
 const DOT_RADIUS = 3;

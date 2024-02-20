@@ -1,7 +1,8 @@
 import { DoodleShape } from './DoodleShape';
 import { HOVER_THRESHOLD, IS_DEBUG_MODE } from '../constants';
 
-const QUAD_CAPACITY = 20; // max number of shapes in a quad
+const QUAD_CAPACITY = 25; // max number of shapes in a quad
+const MIN_QUAD_SIZE = 12; // minimum size of a quad
 
 export class Rectangle {
   x: number;
@@ -73,6 +74,10 @@ export class QuadTree {
     this.divided = true;
   }
 
+  isMaxDepth() {
+    return this.boundary.w < MIN_QUAD_SIZE;
+  }
+
   insert(shape: DoodleShape) {
     // exit if the shape is not in the boundary
     if (!this?.boundary.contains(shape)) {
@@ -83,6 +88,11 @@ export class QuadTree {
     if (this.shapes.length < QUAD_CAPACITY) {
       this.shapes.push(shape);
       return true;
+    }
+
+    // exit if the quad is at the smallest size, shape is not added
+    if (this.isMaxDepth()) {
+      return false;
     }
 
     // subdivide & recurse if max capacity is reached
@@ -125,8 +135,10 @@ export class QuadTree {
 
   createShape(x: number, y: number) {
     const newShape = new DoodleShape({ x, y, p: this.p });
+    const didAdd = this.insert(newShape);
+    if (!didAdd) return null;
+
     newShape.show();
-    this.insert(newShape);
     return newShape;
   }
 

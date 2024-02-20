@@ -57,11 +57,16 @@ export const sketch = (p: p5) => {
 
     createQuadtree();
 
-    shapesCache = shapesCache.map((shape) => {
+    const nextShapesCache: DoodleShape[] = [];
+
+    shapesCache.forEach((shape) => {
       const x = (shape.x / prevWidth) * newWidth;
       const y = (shape.y / prevWidth) * newWidth;
-      return qtree.createShape(x, y);
+      const newShape = qtree.createShape(x, y);
+      if (newShape) nextShapesCache.push(newShape);
     });
+
+    shapesCache = nextShapesCache;
 
     p.redraw();
   };

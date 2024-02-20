@@ -26,17 +26,17 @@ export const sketch = (p: p5) => {
   const drawBackground = () => {
     p.background(WHITE);
     p.imageMode(p.CENTER);
-    if (bg) p.image(bg, START_X, START_Y, IMAGE_WIDTH, IMAGE_HEIGHT);
+
+  const createQuadtree = () => {
+    const boundary = new Rectangle(-p.width/2, -p.height/2, p.width, p.height);
+    qtree = new QuadTree(boundary, p);
   };
 
   p.setup = () => {
     // init canvas
     p.createCanvas(IMAGE_WIDTH, IMAGE_HEIGHT, p.WEBGL);
     drawBackground();
-
-    // init quadtree
-    const initBoundary = new Rectangle(-IMAGE_WIDTH/2, -IMAGE_HEIGHT/2, IMAGE_WIDTH, IMAGE_HEIGHT);
-    qtree = new QuadTree(initBoundary, p);
+    createQuadtree();
 
     // init erase mode toggle button
     eraseModeToggleButton = p.createButton('erase')
@@ -67,15 +67,15 @@ export const sketch = (p: p5) => {
     const prevShapesCount = shapesCache.length;
     shapesCache = shapesCache.filter((shape) => !shape.isHidden);
 
-    const shouldReconstructQuadtree = prevShapesCount !== shapesCache.length;
+    const shouldRebuildQuadtree = prevShapesCount !== shapesCache.length;
 
-    if (shouldReconstructQuadtree) {
-      const newQtree = new QuadTree(qtree.boundary, p);
-      shapesCache.forEach(newQtree.insert);
-      qtree = newQtree;
+    if (shouldRebuildQuadtree) {
+      createQuadtree();
+      shapesCache.forEach((shape) => qtree.insert(shape));
     }
 
     shouldCleanUp = false;
+    p.redraw();
   };
 
   p.mouseDragged = drawAtMousePos;

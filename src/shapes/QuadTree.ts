@@ -1,5 +1,5 @@
 import { DoodleShape } from './DoodleShape';
-import { HOVER_QUERY_RANGE, IS_DEBUG_MODE } from '../constants';
+import { HOVER_THRESHOLD, IS_DEBUG_MODE } from '../constants';
 
 const QUAD_CAPACITY = 20; // max number of shapes in a quad
 
@@ -101,7 +101,7 @@ export class QuadTree {
     return false;
   }
 
-  query(range: Rectangle, x: number, y: number, foundShapes: DoodleShape[] = []) {
+  query(range: Rectangle, foundShapes: DoodleShape[] = []) {
     if (!this.boundary.intersects(range)) {
       return [];
     }
@@ -109,14 +109,15 @@ export class QuadTree {
     for (const shape of this.shapes) {
       if (range.contains(shape)) {
         shape.hide();
+        foundShapes.push(shape);
       }
     }
 
     if (this.divided) {
-      this.northwest.query(range, x, y, foundShapes);
-      this.northeast.query(range, x, y, foundShapes);
-      this.southwest.query(range, x, y, foundShapes);
-      this.southeast.query(range, x, y, foundShapes);
+      this.northwest.query(range, foundShapes);
+      this.northeast.query(range, foundShapes);
+      this.southwest.query(range, foundShapes);
+      this.southeast.query(range, foundShapes);
     }
 
     return foundShapes;
@@ -130,10 +131,9 @@ export class QuadTree {
   }
 
   findAndEraseShapes(x: number, y: number) {
-    const range = new Rectangle(x, y, HOVER_QUERY_RANGE, HOVER_QUERY_RANGE);
-    const hoveredShapes = this.query(range, x, y);
-    const didHideShapes = !!hoveredShapes.length;
-    return didHideShapes;
+    const range = new Rectangle(x, y, HOVER_THRESHOLD, HOVER_THRESHOLD);
+    const foundShapes = this.query(range);
+    return !!foundShapes;
   }
 
   drawQuadBoundaries() {

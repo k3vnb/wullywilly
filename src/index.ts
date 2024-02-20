@@ -16,6 +16,7 @@ export const sketch = (p: p5) => {
   let eraseModeToggleButton: p5.Element;
   let shapesCache: DoodleShape[] = [];
   let shouldCleanUp = false;
+  let canvasEl: HTMLCanvasElement | null;
 
   p.preload = () => {
     bg = p.loadImage('./assets/woolywilly.svg');
@@ -38,6 +39,7 @@ export const sketch = (p: p5) => {
     // init canvas
     const width = Math.min(p.windowWidth, CANVAS_MAX_WIDTH);
     p.createCanvas(width, width, p.WEBGL);
+    canvasEl = document.querySelector('canvas');
     drawBackground();
     createQuadtree();
 
@@ -47,6 +49,8 @@ export const sketch = (p: p5) => {
       .mousePressed(() => {
         isEraseMode = !isEraseMode;
         eraseModeToggleButton.html(isEraseMode ? 'draw' : 'erase');
+        if (isEraseMode) canvasEl.classList.add('eraseMode');
+        if (!isEraseMode) canvasEl.classList.remove('eraseMode');
       });
   };
 

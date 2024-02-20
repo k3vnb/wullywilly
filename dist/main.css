@@ -9,6 +9,12 @@ body {
     #f2f2f2 0px 60px,
     #fceb00 0px 210px
   );
+  .p5Canvas {
+    cursor: url("./assets/pen.svg"), crosshair;
+  }
+  .p5Canvas.eraseMode {
+    cursor: crosshair;
+  }
 }
 
 h1 {
@@ -33,7 +39,6 @@ h1 {
   border: 0.5px solid #151515;
   box-shadow: -12px 9px 0px #393838;
   outline: none;
-  cursor: default;
   touch-action: none;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }

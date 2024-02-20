@@ -27,7 +27,7 @@ export class DotAndSpeck {
     this.speckCoord = randomCoord;
   }
 
-  display = () => {
+  show = () => {
     // draw a speck
     this.p.stroke(this.speckColor);
     this.p.strokeWeight(this.speckRadius);

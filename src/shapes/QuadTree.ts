@@ -74,18 +74,18 @@ export class QuadTree {
   }
 
   insert(shape: DoodleShape) {
-    // if the shape is not in the boundary, don't add it
+    // exit if the shape is not in the boundary
     if (!this.boundary.contains(shape)) {
       return false;
     }
 
-    // if there's room, add the shape
+    // add shape if below max capacity
     if (this.shapes.length < QUAD_CAPACITY) {
       this.shapes.push(shape);
       return true;
     }
 
-    // if there's no room, subdivide and try again
+    // subdivide & recurse if max capacity is reached
     if (!this.divided) this.subdivide();
 
     if (this.northeast.insert(shape)) {
@@ -108,7 +108,7 @@ export class QuadTree {
 
     for (const shape of this.shapes) {
       if (range.contains(shape)) {
-        shape.setHide(true);
+        shape.hide();
       }
     }
 
@@ -124,7 +124,7 @@ export class QuadTree {
 
   createShape(x: number, y: number) {
     const newShape = new DoodleShape({ x, y, p: this.p });
-    newShape.display();
+    newShape.show();
     this.insert(newShape);
     return newShape;
   }
@@ -136,22 +136,24 @@ export class QuadTree {
     return didHideShapes;
   }
 
+  drawQuadBoundaries() {
+    this.p.stroke('#FF0000');
+    this.p.noFill();
+    this.p.strokeWeight(1);
+    this.p.rectMode(this.p.CENTER);
+    this.p.rect(
+      this.boundary.x,
+      this.boundary.y,
+      this.boundary.w * 2,
+      this.boundary.h * 2
+    );
+  }
+
   show() {
-    if (IS_DEBUG_MODE) {
-      this.p.stroke('#FF0000');
-      this.p.noFill();
-      this.p.strokeWeight(1);
-      this.p.rectMode(this.p.CENTER);
-      this.p.rect(
-        this.boundary.x,
-        this.boundary.y,
-        this.boundary.w * 2,
-        this.boundary.h * 2
-      );
-    }
+    if (IS_DEBUG_MODE) this.drawQuadBoundaries();
 
     for (const shape of this.shapes) {
-      shape.display();
+      shape.show();
     }
 
     if (this.divided) {

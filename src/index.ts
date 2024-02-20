@@ -50,7 +50,6 @@ export const sketch = (p: p5) => {
   const eraseAtMousePos = (x: number, y: number) => {
     p.loop();
     const didEraseShapes = qtree.findAndEraseShapes(x, y);
-
     if (didEraseShapes) shouldCleanUp = true;
   };
 
@@ -65,20 +64,17 @@ export const sketch = (p: p5) => {
 
   const cleanup = () => {
     // remove hidden shapes from cache & quadtree for better performance
-    const shapesCount = shapesCache.length;
-    shapesCache = shapesCache.filter((shape) => !shape.isHidden());
+    const prevShapesCount = shapesCache.length;
+    shapesCache = shapesCache.filter((shape) => !shape.isHidden);
 
-    const shouldCleanShapes = shapesCount !== shapesCache.length;
+    const shouldReconstructQuadtree = prevShapesCount !== shapesCache.length;
 
-    if (shouldCleanShapes) {
-      // reconstruct the quadtree with the updated shapes
+    if (shouldReconstructQuadtree) {
       const newQtree = new QuadTree(qtree.boundary, p);
-      shapesCache = shapesCache.filter((shape) => !shape.isHidden());
-      shapesCache.forEach((shape) => {
-        newQtree.insert(shape);
-      });
+      shapesCache.forEach(newQtree.insert);
       qtree = newQtree;
     }
+
     shouldCleanUp = false;
   };
 

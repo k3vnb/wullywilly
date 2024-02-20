@@ -18,7 +18,7 @@ export class SquigglyQuad {
     this.strokeWeight = getRandomInt({ min: 1, max: 2, p });
   }
 
-  display = () => {
+  show = () => {
     this.p.stroke(this.color);
     this.p.strokeWeight(this.strokeWeight);
     this.p.point(this.x, this.y);

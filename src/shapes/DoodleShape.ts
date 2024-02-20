@@ -7,7 +7,7 @@ export class DoodleShape {
   squigglyQuad: SquigglyQuad;
   x: number;
   y: number;
-  shouldHide = false;
+  isHidden = false;
 
   constructor({ x, y, p }: IShapeBase) {
     this.x = x;
@@ -16,16 +16,12 @@ export class DoodleShape {
     this.squigglyQuad = new SquigglyQuad({ x, y, p }); // main shape
   }
 
-  isHidden = () => this.shouldHide;
+  hide = () => this.isHidden = true;
 
-  setHide = (hide: boolean) => {
-    this.shouldHide = hide;
-  };
+  show = () => {
+    if (this.isHidden) return;
 
-  display = () => {
-    if (this.shouldHide) return;
-
-    this.dotAndSpeck.display();
-    this.squigglyQuad.display();
+    this.dotAndSpeck.show();
+    this.squigglyQuad.show();
   };
 }

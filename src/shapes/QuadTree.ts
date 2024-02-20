@@ -75,7 +75,7 @@ export class QuadTree {
 
   insert(shape: DoodleShape) {
     // exit if the shape is not in the boundary
-    if (!this.boundary.contains(shape)) {
+    if (!this?.boundary.contains(shape)) {
       return false;
     }
 

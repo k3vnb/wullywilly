@@ -1,5 +1,5 @@
 import { DoodleShape } from './DoodleShape';
-import { IS_DEBUG_MODE } from '../constants';
+import { HOVER_QUERY_RANGE, IS_DEBUG_MODE } from '../constants';
 
 const QUAD_CAPACITY = 20; // max number of shapes in a quad
 
@@ -16,12 +16,12 @@ export class Rectangle {
     this.h = h;
   }
 
-  contains(point: DoodleShape) {
+  contains(shape: DoodleShape) {
     return (
-      point.x >= this.x - this.w &&
-      point.x < this.x + this.w &&
-      point.y >= this.y - this.h &&
-      point.y < this.y + this.h
+      shape.x >= this.x - this.w &&
+      shape.x < this.x + this.w &&
+      shape.y >= this.y - this.h &&
+      shape.y < this.y + this.h
     );
   }
 
@@ -69,50 +69,59 @@ export class QuadTree {
     this.southeast = new QuadTree(se, this.p);
     const sw = new Rectangle(x - halfW, y + halfH, halfW, halfH);
     this.southwest = new QuadTree(sw, this.p);
+
     this.divided = true;
   }
 
   insert(shape: DoodleShape) {
+    // if the shape is not in the boundary, don't add it
     if (!this.boundary.contains(shape)) {
       return false;
     }
 
+    // if there's room, add the shape
     if (this.shapes.length < QUAD_CAPACITY) {
       this.shapes.push(shape);
       return true;
-    } else {
-      if (!this.divided) {
-        this.subdivide();
-      }
-      if (this.northeast.insert(shape)) {
-        return true;
-      } else if (this.northwest.insert(shape)) {
-        return true;
-      } else if (this.southeast.insert(shape)) {
-        return true;
-      } else if (this.southwest.insert(shape)) {
-        return true;
-      }
     }
+
+    // if there's no room, subdivide and try again
+    if (!this.divided) this.subdivide();
+
+    if (this.northeast.insert(shape)) {
+      return true;
+    } else if (this.northwest.insert(shape)) {
+      return true;
+    } else if (this.southeast.insert(shape)) {
+      return true;
+    } else if (this.southwest.insert(shape)) {
+      return true;
+    }
+
+    return false;
   }
 
-  query(range: Rectangle, found: DoodleShape[] = []) {
+  query(range: Rectangle, x: number, y: number, foundShapes: DoodleShape[] = []) {
     if (!this.boundary.intersects(range)) {
       return [];
-    } else {
-      for (const p of this.shapes) {
-        if (range.contains(p)) {
-          found.push(p);
-        }
-      }
-      if (this.divided) {
-        this.northwest.query(range, found);
-        this.northeast.query(range, found);
-        this.southwest.query(range, found);
-        this.southeast.query(range, found);
+    }
+
+    for (const shape of this.shapes) {
+      const shouldHideShape = !shape.isHidden() && range.contains(shape) && shape.isHovered(x, y, this.p);
+      if (shouldHideShape) {
+        shape.setHide(true);
+        foundShapes.push(shape);
       }
     }
-    return found;
+
+    if (this.divided) {
+      this.northwest.query(range, x, y, foundShapes);
+      this.northeast.query(range, x, y, foundShapes);
+      this.southwest.query(range, x, y, foundShapes);
+      this.southeast.query(range, x, y, foundShapes);
+    }
+
+    return foundShapes;
   }
 
   createShape(x: number, y: number) {
@@ -120,6 +129,13 @@ export class QuadTree {
     newShape.display();
     this.insert(newShape);
     return newShape;
+  }
+
+  findAndEraseShapes(x: number, y: number) {
+    const range = new Rectangle(x, y, HOVER_QUERY_RANGE, HOVER_QUERY_RANGE);
+    const hoveredShapes = this.query(range, x, y);
+    const didHideShapes = !!hoveredShapes.length;
+    return didHideShapes;
   }
 
   show() {

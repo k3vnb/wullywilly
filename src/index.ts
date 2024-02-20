@@ -9,7 +9,6 @@ import {
   IMAGE_HEIGHT,
   IMAGE_WIDTH,
   IS_DEBUG_MODE,
-  HOVER_QUERY_RANGE,
 } from './constants';
 
 export const sketch = (p: p5) => {
@@ -48,22 +47,11 @@ export const sketch = (p: p5) => {
       });
   };
 
-  const getShapesInQuadTree = (x: number, y: number) => {
-    const range = new Rectangle(x, y, HOVER_QUERY_RANGE, HOVER_QUERY_RANGE);
-    return qtree.query(range);
-  };
-
   const eraseAtMousePos = (x: number, y: number) => {
-    const shapesInRange = getShapesInQuadTree(x, y);
-    if (!shapesInRange.length) return;
-
     p.loop();
-    shapesInRange.forEach((shape) => {
-      if (shape.isHovered(x, y, p)) {
-        shape.setHide(true);
-        shouldCleanUp = true;
-      }
-    });
+    const didEraseShapes = qtree.findAndEraseShapes(x, y);
+
+    if (didEraseShapes) shouldCleanUp = true;
   };
 
   const drawAtMousePos = () => {

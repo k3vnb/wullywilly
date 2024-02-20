@@ -10,8 +10,6 @@ export class DoodleShape {
   squigglyQuad: SquigglyQuad;
   x: number;
   y: number;
-  gridCellX: number;
-  gridCellY: number;
   shouldHide = false;
 
   constructor({ x, y, p }: IShapeBase) {

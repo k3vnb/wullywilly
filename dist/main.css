@@ -10,10 +10,10 @@ body {
     #fceb00 0px 210px
   );
   .p5Canvas {
-    cursor: url("./assets/pen.svg"), crosshair;
+    cursor: url("./assets/pen.svg"), default;
   }
   .p5Canvas.eraseMode {
-    cursor: crosshair;
+    cursor: url("./assets/oval.svg"), crosshair;
   }
 }
 

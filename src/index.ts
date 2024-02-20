@@ -7,6 +7,7 @@ import {
   IMG_SCALE,
   IMG_OFFSET_X,
   IS_DEBUG_MODE,
+  CANVAS_MARGIN_X,
   CANVAS_MAX_WIDTH,
 } from './constants';
 
@@ -38,7 +39,7 @@ export const sketch = (p: p5) => {
 
   p.setup = () => {
     // init canvas
-    const width = Math.min(p.windowWidth, CANVAS_MAX_WIDTH);
+    const width = Math.min(p.windowWidth - CANVAS_MARGIN_X, CANVAS_MAX_WIDTH);
     p.createCanvas(width, width, p.WEBGL);
     canvasEl = document.querySelector('canvas');
     drawBackground();
@@ -57,7 +58,7 @@ export const sketch = (p: p5) => {
 
   p.windowResized = () => {
     const prevWidth = p.width;
-    const newWidth = Math.min(p.windowWidth, CANVAS_MAX_WIDTH);
+    const newWidth = Math.min(p.windowWidth - CANVAS_MARGIN_X, CANVAS_MAX_WIDTH);
     p.resizeCanvas(newWidth, newWidth, true);
 
     createQuadtree();

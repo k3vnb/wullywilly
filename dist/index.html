@@ -16,18 +16,18 @@
   <script src="bundle.js"></script>
   <div class="controls">
     <span class="buttonGroup">
-      <button type="button" class="controlButton groupButton drawButton active">
-        Draw
+      <button type="button" title="draw" aria-label="turn on drawing mode" class="controlButton groupButton drawButton active">
+        <img aria-hidden="true" src="./assets/icons/pen-icon.svg" alt="Draw">
       </button>
-      <button type="button" class="controlButton groupButton eraseButton">
-        Erase
+      <button type="button" title="erase" aria-label="turn on erase mode" class="controlButton groupButton eraseButton">
+        <img aria-hidden="true" src="./assets/icons/eraser-icon.svg" alt="Erase">
       </button>
     </span>
     <span class="controls-right">
-      <button type="button" class="controlButton resetButton">
+      <button type="button" aria-label="reset drawing" class="controlButton resetButton">
         Start Over
       </button>
-      <button type="button" class="controlButton downloadButton">
+      <button type="button" aria-label="download image" class="controlButton downloadButton">
         Download Image
       </button>
     </span>

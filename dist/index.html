@@ -1,13 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta charset="UTF-8">
-    <link href="main.css" rel="stylesheet">
-    <title>Wully Willy</title>
-  </head>
-  <body>
-    <h1>Wooly Willy</h1>
-    <script src="bundle.js"></script>
-  </body>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <link href="main.css" rel="stylesheet">
+  <title>Wully Willy</title>
+</head>
+
+<body>
+  <h1>Wooly Willy</h1>
+  <script src="bundle.js"></script>
+  <div class="controls">
+    <span class="buttonGroup">
+      <button type="button" class="controlButton groupButton drawButton active">
+        Draw
+      </button>
+      <button type="button" class="controlButton groupButton eraseButton">
+        Erase
+      </button>
+    </span>
+    <span class="controls-right">
+      <button type="button" class="controlButton resetButton">
+        Start Over
+      </button>
+      <button type="button" class="controlButton downloadButton">
+        Download Image
+      </button>
+    </span>
+  </div>
+</body>
 </html>

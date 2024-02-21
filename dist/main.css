@@ -28,15 +28,16 @@ body {
 
 h1 {
   font-weight: 700;
-  font-size: 5.5rem;
-  color: #393838;
+  font-size: 6rem;
+  line-height: 1;
+  color: #222222;
   text-align: center;
-  margin-top: 0;
-  margin-bottom: 20px;
-  letter-spacing: 0.5px;
+  margin: 0;
+  letter-spacing: 1px;
+  font-family: "Caveat", cursive;
   text-shadow: 2px 2px 2px #171717b6;
   @media screen and (max-width: 580px){
-    font-size: 3.5rem;
+    font-size: 4.5rem;
   }
 }
 

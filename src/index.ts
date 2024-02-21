@@ -15,10 +15,11 @@ export const sketch = (p: p5) => {
   let bg: p5.Image | undefined;
   let qtree: QuadTree;
   let isEraseMode = false;
-  let eraseModeToggleButton: p5.Element;
   let shapesCache: DoodleShape[] = [];
   let shouldCleanUp = false;
   let canvasEl: HTMLCanvasElement | null;
+  let eraseButton: HTMLButtonElement | null;
+  let drawButton: HTMLButtonElement | null;
 
   p.preload = () => {
     bg = p.loadImage('./assets/woolywilly.svg');
@@ -37,6 +38,36 @@ export const sketch = (p: p5) => {
     qtree = new QuadTree(boundary, p);
   };
 
+  const toggleEraseMode = (eraseModeOn: boolean) => {
+    isEraseMode = eraseModeOn;
+    const activeButton = isEraseMode ? eraseButton : drawButton;
+    const inactiveButton = isEraseMode ? drawButton : eraseButton;
+    activeButton.classList.add('active');
+    inactiveButton.classList.remove('active');
+    if (isEraseMode) canvasEl.classList.add('eraseMode');
+    if (!isEraseMode) canvasEl.classList.remove('eraseMode');
+  };
+
+  const initControls = () => {
+    eraseButton = document.getElementsByClassName('eraseButton')[0] as HTMLButtonElement;
+    drawButton = document.getElementsByClassName('drawButton')[0] as HTMLButtonElement;
+    const resetButton = document.getElementsByClassName('resetButton')[0] as HTMLButtonElement;
+    const downloadButton = document.getElementsByClassName('downloadButton')[0] as HTMLButtonElement;
+
+    eraseButton.addEventListener('click', () => toggleEraseMode(true));
+    drawButton.addEventListener('click', () => toggleEraseMode(false));
+
+    resetButton.addEventListener('click', () => {
+      shapesCache = [];
+      createQuadtree();
+      p.redraw();
+    });
+
+    downloadButton.addEventListener('click', () => {
+      p.saveCanvas('wullyWilly', 'png');
+    });
+  };
+
   p.setup = () => {
     // init canvas
     const width = Math.min(p.windowWidth - CANVAS_MARGIN_X, CANVAS_MAX_WIDTH);
@@ -44,16 +75,7 @@ export const sketch = (p: p5) => {
     canvasEl = document.querySelector('canvas');
     drawBackground();
     createQuadtree();
-
-    // init erase mode toggle button
-    eraseModeToggleButton = p.createButton('erase')
-      .addClass('eraseModeToggleButton')
-      .mousePressed(() => {
-        isEraseMode = !isEraseMode;
-        eraseModeToggleButton.html(isEraseMode ? 'draw' : 'erase');
-        if (isEraseMode) canvasEl.classList.add('eraseMode');
-        if (!isEraseMode) canvasEl.classList.remove('eraseMode');
-      });
+    initControls();
   };
 
   p.windowResized = () => {

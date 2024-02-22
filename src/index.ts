@@ -19,6 +19,7 @@ export const sketch = (p: p5) => {
   let shouldCleanUp = false;
   let canvasEl: HTMLCanvasElement | null;
   let toggleEl: HTMLElement | null;
+  let resetButtonEl: HTMLButtonElement | null;
 
   p.preload = () => {
     bg = p.loadImage('./assets/woolywilly.svg');
@@ -60,10 +61,12 @@ export const sketch = (p: p5) => {
       }
     });
 
-    const resetButton = document.getElementsByClassName('resetButton')[0] as HTMLButtonElement;
+    resetButtonEl = document.getElementsByClassName('resetButton')[0] as HTMLButtonElement;
     const downloadButton = document.getElementsByClassName('downloadButton')[0] as HTMLButtonElement;
 
-    resetButton.addEventListener('click', () => {
+    resetButtonEl.addEventListener('click', () => {
+      resetButtonEl.classList.add('active');
+      setTimeout(() => resetButtonEl.classList.remove('active'), 200);
       shapesCache = [];
       createQuadtree();
       p.redraw();

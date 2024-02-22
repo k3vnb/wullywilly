@@ -94,6 +94,10 @@ fieldset.radioToggle {
   background-color: #eeeeee;
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
   color: #262626;
+  &:has( input:focus-visible) {
+    outline: 2px solid rgb(0, 68, 255);
+    outline-offset: 2px;
+  }
   .optionContainer {
     display: inline-flex;
     align-items: center;
@@ -188,6 +192,25 @@ fieldset.radioToggle {
   }
   &.downloadButton {
     padding: 7px;
+  }
+  &.resetButton {
+    &.active img {
+      animation: rotating .5s linear;
+    }
+    
+  }
+  &:focus-visible {
+    outline: 2px solid rgb(0, 68, 255);
+    outline-offset: 2px;
+  }
+}
+
+@keyframes rotating {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }
 

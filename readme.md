@@ -1,7 +1,7 @@
 # Wully Willy
 
 ## Description
-Based on the classic game [Wooly Willy](https://www.google.com/search?q=wooly+willy) where you draw magnetic filings onto a cartoon face, this is a simple web app that lets you draw on a cartoon face using your mouse.
+Based on the classic game [Wooly Willy](https://www.google.com/search?q=wooly+willy).  Draw some wacky hair styles!  Draw, Erase, and Save your creations.
 
-## Technologies Used
-- p5.js for canvas interaction
+## Tech
+- Built with `p5.js`, `TypeScript`, and mostly vanilla HTML/CSS and JavaScript.

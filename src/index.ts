@@ -30,6 +30,7 @@ export const sketch = (p: p5) => {
     p.imageMode(p.CENTER);
     const width = p.round(p.width * IMG_SCALE);
     const offset = p.round(IMG_OFFSET_X * IMG_SCALE);
+
     if (bg) p.image(bg, offset, offset, width, width);
   };
 
@@ -75,6 +76,9 @@ export const sketch = (p: p5) => {
     downloadButton.addEventListener('click', () => {
       p.saveCanvas('wullyWilly', 'png');
     });
+
+    const h1 = document.querySelector('h1');
+    h1.classList.add('fadeIn');
   };
 
   p.setup = () => {
@@ -82,8 +86,17 @@ export const sketch = (p: p5) => {
     const width = Math.min(p.windowWidth - CANVAS_MARGIN_X, CANVAS_MAX_WIDTH);
     p.createCanvas(width, width, p.WEBGL);
     canvasEl = document.querySelector('canvas');
+
+    // init background & draw a semi-transparent white rectangle to fade in the background
+    p.fill('#ffffff20');
+    p.rect(0, 0, p.width, p.height);
     drawBackground();
+    p.noFill();
+
+    // create quadtree data structure for efficient collision detection
     createQuadtree();
+
+    // init html controls
     initControls();
   };
 
@@ -155,4 +168,4 @@ export const sketch = (p: p5) => {
   };
 };
 
-export const myp5 = new p5(sketch, document.body);
+export const myp5 = new p5(sketch, document.getElementById('canvas-container'));

@@ -7,45 +7,53 @@
   <link href="main.css" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..500" rel="stylesheet">
   <title>Wully Willy</title>
 </head>
 
 <body>
   <h1>Wully Willy</h1>
-  <script src="bundle.js"></script>
-    <div class="controls">
-      <!-- draw / erase toggle --> 
-      <form id="draw-mode-toggle" class="toggleForm">
-        <span id="animated-switch" class="animatedSwitch"></span>
-        <fieldset class="radioToggle" aria-labelledby="toggle-label">
-          <legend id="toggle-label" class="sr-only">Draw / Erase Mode Toggle Switch</legend>
-          <div class="optionContainer">
-            <input type="radio" id="draw-mode" name="draw-mode" value="draw" checked tabindex="0">
-            <label title="draw mode" class="optionLabel" for="draw-mode">
-              <span class="sr-only">Draw Mode</span>
-              <img class="optionIcon" aria-hidden="true" src="./assets/icons/pen-icon.svg" alt="Draw">
-            </label>
-          </div>
-          <div class="optionContainer">
+  <div class="controls">
+    <!-- draw / erase toggle -->
+    <form id="draw-mode-toggle" class="toggleForm">
+      <span id="animated-switch" class="animatedSwitch"></span>
+      <fieldset class="radioToggle" aria-labelledby="toggle-label">
+        <legend id="toggle-label" class="sr-only">Draw / Erase Mode Toggle Switch</legend>
+        <div class="optionContainer">
+          <input type="radio" id="draw-mode" name="draw-mode" value="draw" checked tabindex="0">
+          <label title="draw mode" class="optionLabel" for="draw-mode">
+            <span class="sr-only">Draw Mode</span>
+            <img class="optionIcon" aria-hidden="true" src="./assets/icons/pen-icon.svg" alt="Draw">
+          </label>
+        </div>
+        <div class="optionContainer">
           <input type="radio" id="erase-mode" name="draw-mode" value="erase" tabindex="0">
-            <label title="erase mode" class="optionLabel" for="erase-mode">
-              <span class="sr-only">Erase Mode</span>
-              <img class="optionIcon" aria-hidden="true" src="./assets/icons/eraser-icon.svg" alt="Erase">
-            </label>
-          </div>
-        </fieldset>
-      </form>
-      <!-- other controls --> 
-      <span class="controls-right">
-        <button type="button" title="start over" aria-label="reset drawing" class="controlButton resetButton">
-          <img class="resetIcon" aria-hidden="true" src="./assets/icons/reset-icon.svg" alt="Erase">
-        </button>
-        <button type="button" title="download your drawing" aria-label="download image" class="controlButton downloadButton">
-          <img class="downloadIcon" aria-hidden="true" src="./assets/icons/download-icon.svg" alt="Erase">
-        </button>
-      </span>
-    </div>
+          <label title="erase mode" class="optionLabel" for="erase-mode">
+            <span class="sr-only">Erase Mode</span>
+            <img class="optionIcon" aria-hidden="true" src="./assets/icons/eraser-icon.svg" alt="Erase">
+          </label>
+        </div>
+      </fieldset>
+    </form>
+    <!-- other controls -->
+    <span class="controlsRight">
+      <button type="button" title="start over" aria-label="reset drawing" class="controlButton resetButton">
+        <img class="resetIcon" aria-hidden="true" src="./assets/icons/reset-icon.svg" alt="Erase">
+      </button>
+      <button type="button" title="download your drawing" aria-label="download image"
+        class="controlButton downloadButton">
+        <img class="downloadIcon" aria-hidden="true" src="./assets/icons/download-icon.svg" alt="Erase">
+      </button>
+    </span>
   </div>
+  </div>
+  <section class="canvasContent">
+    <div id="p5_loading" class="p5Loading">
+      <span class="loadingText">Loading...</span>
+    </div>
+    <div id="canvas-container"></div>
+  </section>
+  <script src="bundle.js"></script>
 </body>
+
 </html>

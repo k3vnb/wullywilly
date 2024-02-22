@@ -18,8 +18,7 @@ export const sketch = (p: p5) => {
   let shapesCache: DoodleShape[] = [];
   let shouldCleanUp = false;
   let canvasEl: HTMLCanvasElement | null;
-  let eraseButton: HTMLButtonElement | null;
-  let drawButton: HTMLButtonElement | null;
+  let toggleEl: HTMLElement | null;
 
   p.preload = () => {
     bg = p.loadImage('./assets/woolywilly.svg');
@@ -40,22 +39,29 @@ export const sketch = (p: p5) => {
 
   const toggleEraseMode = (eraseModeOn: boolean) => {
     isEraseMode = eraseModeOn;
-    const activeButton = isEraseMode ? eraseButton : drawButton;
-    const inactiveButton = isEraseMode ? drawButton : eraseButton;
-    activeButton.classList.add('active');
-    inactiveButton.classList.remove('active');
-    if (isEraseMode) canvasEl.classList.add('eraseMode');
-    if (!isEraseMode) canvasEl.classList.remove('eraseMode');
+    if (isEraseMode) {
+      toggleEl.classList.add('activeRight');
+      canvasEl.classList.add('eraseMode');
+    } else {
+      toggleEl.classList.remove('activeRight');
+      canvasEl.classList.remove('eraseMode');
+    }
   };
 
   const initControls = () => {
-    eraseButton = document.getElementsByClassName('eraseButton')[0] as HTMLButtonElement;
-    drawButton = document.getElementsByClassName('drawButton')[0] as HTMLButtonElement;
+    // html widgets outside the p5 canvas
+    const toggleForm = document.getElementById('draw-mode-toggle');
+
+    toggleEl = document.getElementById('draw-mode-toggle') as HTMLElement;
+    toggleForm.addEventListener('change', function(event: Event) {
+      const target = event.target as HTMLInputElement;
+      if (target.type === 'radio') {
+        toggleEraseMode(target.value === 'erase');
+      }
+    });
+
     const resetButton = document.getElementsByClassName('resetButton')[0] as HTMLButtonElement;
     const downloadButton = document.getElementsByClassName('downloadButton')[0] as HTMLButtonElement;
-
-    eraseButton.addEventListener('click', () => toggleEraseMode(true));
-    drawButton.addEventListener('click', () => toggleEraseMode(false));
 
     resetButton.addEventListener('click', () => {
       shapesCache = [];

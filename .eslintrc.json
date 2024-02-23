@@ -18,7 +18,7 @@
   "ignorePatterns": [
     "dist/",
     "node_modules/",
-    "webpack.config.js"
+    "webpack/"
   ],
   "rules": {
     "semi": ["error", "always"],

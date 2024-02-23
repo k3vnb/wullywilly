@@ -62,7 +62,7 @@ h1 {
     rgba(0, 0, 0, 0.14) 0px 3px 4px 0px, rgba(0, 0, 0, 0.12) 0px 1px 8px 0px;
   cursor: url("./assets/pen.svg"), default;
   &.eraseMode {
-    cursor: url("./assets/oval.svg") 18 18, crosshair;
+    cursor: url("./assets/oval.svg") 12 12, crosshair;
   }
 }
 

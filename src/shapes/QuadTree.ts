@@ -1,8 +1,8 @@
 import { DoodleShape } from './DoodleShape';
 import { HOVER_THRESHOLD, IS_DEBUG_MODE } from '../constants';
 
-const QUAD_CAPACITY = 25; // max number of shapes in a quad
-const MIN_QUAD_SIZE = 16; // minimum size of a quad
+const QUAD_CAPACITY = 20; // max number of shapes in a quad
+const MIN_QUAD_SIZE = 12; // minimum size of a quad
 
 export class Rectangle {
   x: number;

@@ -1,0 +1,82 @@
+<svg width="1220" height="1220" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+ <defs>
+  <pattern id="gridpattern" patternUnits="userSpaceOnUse" x="0" y="0" width="100" height="100">
+   <image id="svg_1" x="0" y="0" width="100" height="100"/>
+  </pattern>
+  <radialGradient r="1.2266" cy="0.28125" cx="0.19012" spreadMethod="pad" id="svg_2">
+   <stop offset="0.49091" stop-color="#ff0000"/>
+   <stop offset="1" stop-color="#000000"/>
+  </radialGradient>
+  <filter id="svg_19_blur">
+   <feGaussianBlur stdDeviation="0.7"/>
+  </filter>
+  <filter height="200%" width="200%" y="-50%" x="-50%" id="svg_51_blur">
+   <feGaussianBlur stdDeviation="4"/>
+  </filter>
+  <pattern height="100" width="100" y="0" x="0" patternUnits="userSpaceOnUse" id="gridpattern">
+   <image height="100" width="100" y="0" x="0" id="svg_39"/>
+  </pattern>
+ </defs>
+ <g display="inline" stroke="null">
+  <title>Layer 1</title>
+  <g id="svg_17" stroke="null"/>
+  <g id="svg_42">
+   <g id="svg_45"/>
+   <g id="svg_46"/>
+  </g>
+  <g id="svg_56"/>
+  <g id="svg_57"/>
+  <g stroke="null" transform="rotate(132.2722930908203 435.54443359375,377.58685302734375) " id="svg_58"/>
+  <g id="svg_61"/>
+  <g id="svg_8" stroke="null"/>
+  <g id="svg_9" stroke="null"/>
+  <g id="svg_22"/>
+  <g id="svg_33"/>
+  <g id="svg_34" stroke="null" transform="rotate(6.254794120788574 351.1544189453121,136.3358764648437) "/>
+  <g id="svg_3"/>
+  <g stroke="null" id="svg_29"/>
+  <g id="svg_48"/>
+  <g id="svg_53"/>
+  <g stroke="null" id="svg_40">
+   <ellipse stroke="#000000" id="svg_43" transform="matrix(3.065957612789108,-0.6933095489416492,0.6933095489416492,3.065957612789108,-64.03032586426433,279.40115340310564) " ry="45.49123" rx="15.75" cy="97.95945" cx="300.43808" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="2" fill="#fcdbcf"/>
+   <ellipse stroke="#000000" id="svg_44" transform="matrix(2.4622018688700993,-1.9540563377256428,1.9540563377256428,2.4622018688700993,-34.606217408927456,705.4015739593837) " stroke-opacity="0" ry="7.23656" rx="15.75" cy="80.29342" cx="308.91135" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="2" fill="#fcdbcf"/>
+   <ellipse stroke="#000000" transform="matrix(2.8300292809282945,-1.3681039738125313,1.3681039738125313,2.8300292809282945,-325.51449959331404,237.84147075256777) " ry="45.49123" rx="15.75" id="svg_38" cy="216.14623" cx="81.19352" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="2" fill="#fcdbcf"/>
+   <ellipse stroke="#000000" id="svg_41" transform="matrix(2.897126101984211,-1.2196042650281822,1.2196042650281822,2.897126101984211,-254.84817135783686,202.1877784252185) " stroke-opacity="0" ry="8.6008" rx="15.75" cy="186.09274" cx="78.37996" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="2" fill="#fcdbcf"/>
+   <ellipse stroke="#000000" transform="matrix(2.76540069754218,-1.4944340721846456,1.4944340721846456,2.76540069754218,-218.49030019947585,424.66155282795404) " ry="158.66667" rx="128" id="svg_12" cy="156.76058" cx="206.2519" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="3" fill="#fcdbcf"/>
+   <ellipse stroke="#000000" transform="matrix(2.76540069754218,-1.4944340721846456,1.4944340721846456,2.76540069754218,-290.25363645662816,487.81483706634197) " ry="117.99999" rx="145.33335" id="svg_13" cy="211.93941" cx="234.55517" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="3" fill="#fcdbcf"/>
+   <ellipse stroke="#000000" transform="matrix(2.76540069754218,-1.4944340721846456,1.4944340721846456,2.76540069754218,-218.33692679289894,424.7428584514656) " id="svg_15" ry="156.55295" rx="126.38655" cy="156.67706" cx="206.32744" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="0" fill="#fcdbcf"/>
+   <ellipse stroke="#000000" transform="matrix(2.76540069754218,-1.4944340721846456,1.4944340721846456,2.76540069754218,-287.3156057864765,486.7109331168109) " id="svg_16" ry="115.88799" rx="141.99892" cy="209.91602" cx="234.32823" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="0" fill="#fcdbcf"/>
+   <ellipse stroke="#000000" transform="matrix(2.715900218012523,-1.5826118348706646,1.5826118348706646,2.715900218012523,-408.6630314793612,662.973017381403) " ry="28.73878" rx="57.6218" id="svg_54" cy="297.7684" cx="303.3054" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="3" fill="#fcdbcf"/>
+   <ellipse stroke="#000000" id="svg_55" transform="matrix(2.715900218012523,-1.5826118348706646,1.5826118348706646,2.715900218012523,-405.1871996147365,658.7216228247331) " ry="27.61185" rx="57.33172" cy="295.04522" cx="301.35461" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="0" fill="#fcdbcf"/>
+   <path stroke="null" id="svg_59" fill="#000000" stroke-width="0.5" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" d="m883.00331,1072.26681c15.22046,13.8241 119.75468,-69.54968 122.51654,-87.03943"/>
+   <path stroke="null" id="svg_60" fill="#fcdbcf" stroke-width="0.5" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" d="m832.81871,1068.64074c27.40821,28.05162 171.86601,-59.40909 171.9294,-85.7341"/>
+   <ellipse stroke="#000000" fill="#ffffff" stroke-width="2.5" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" cx="152.7631" cy="154.51166" id="svg_4" rx="19.55556" ry="26.66667" transform="matrix(2.8441797997201084,-1.33843770155254,1.33843770155254,2.8441797997201084,-214.72693202814537,310.10930887673265) "/>
+   <ellipse stroke="#000000" fill="#6babea" stroke-width="2.5" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" cx="156.33034" cy="161.53647" rx="14.16212" ry="19.31199" transform="matrix(2.8441797997201084,-1.33843770155254,1.33843770155254,2.8441797997201084,-223.0619237332642,316.98557801692425) " id="svg_5"/>
+   <ellipse stroke="#000000" fill="#000000" stroke-width="2.5" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" cx="160.88547" cy="165.39603" rx="12.3378" ry="15.17286" transform="matrix(2.76672874720604,-1.4919739453009417,1.4919739453009417,2.76672874720604,-248.21352249963664,359.5523888819553) " id="svg_6" opacity="0.8"/>
+   <ellipse stroke="#000000" transform="matrix(2.842157422533551,1.3427268521969025,-1.3427268521969025,2.842157422533551,339.08533535980416,-61.77773218119481) " ry="2.83515" rx="2.07028" cy="169.75139" cx="107.02884" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="0.5" fill="#ffffff" filter="url(#svg_19_blur)" id="svg_7"/>
+   <ellipse stroke="#000000" fill="#ffffff" stroke-width="2.5" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" cx="256.98446" cy="108.96826" rx="19.55556" ry="26.66667" transform="matrix(2.8441797997201084,-1.33843770155254,1.33843770155254,2.8441797997201084,-122.58794130174627,435.9769525967729) " id="svg_10"/>
+   <ellipse stroke="#000000" fill="#6babea" stroke-width="2.5" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" cx="260.5517" cy="115.99307" rx="14.16212" ry="19.31199" transform="matrix(2.8441797997201084,-1.33843770155254,1.33843770155254,2.8441797997201084,-130.9229330068652,442.85322173696454) " id="svg_11"/>
+   <ellipse stroke="#000000" fill="#000000" stroke-width="2.5" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" cx="265.10683" cy="119.85263" rx="12.3378" ry="15.17286" transform="matrix(2.76672874720604,-1.4919739453009417,1.4919739453009417,2.76672874720604,-141.00991703767437,497.89440232230345) " opacity="0.8" id="svg_14"/>
+   <ellipse stroke="#000000" transform="matrix(2.842157422533551,1.3427268521969025,-1.3427268521969025,2.842157422533551,309.3257711448232,-215.43680862420422) " ry="2.83515" rx="2.07028" cy="124.20799" cx="211.2502" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="0.5" fill="#ffffff" filter="url(#svg_19_blur)" id="svg_20"/>
+   <ellipse stroke="#000000" fill="#fcdbcf" stroke-width="2.5" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" cx="223.90407" cy="175.34624" id="svg_21" rx="113.89634" ry="40.5" transform="matrix(2.7897480676441524,-1.4484750371162354,1.4484750371162354,2.7897480676441524,-234.454784159164,444.2217537457154) "/>
+   <ellipse stroke="#000000" fill="#fcdbcf" stroke-width="0" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" cx="234.17645" cy="197.29199" rx="132.54138" ry="59.17536" transform="matrix(2.7897480676441524,-1.4484750371162354,1.4484750371162354,2.7897480676441524,-262.61011776477005,466.8615662743098) " id="svg_23"/>
+   <ellipse stroke="#000000" fill="#fcdbcf" stroke-width="0" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" cx="129.62948" cy="198.14451" rx="28.11989" ry="22.09059" transform="matrix(2.7897480676441524,-1.4484750371162354,1.4484750371162354,2.7897480676441524,-300.81504848814734,315.7293385327479) " id="svg_24"/>
+   <ellipse stroke="#000000" fill="#fcdbcf" stroke-width="0" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" cx="301.76664" cy="123.04067" rx="24.14537" ry="23.87266" transform="matrix(2.7897480676441524,-1.4484750371162354,1.4484750371162354,2.7897480676441524,-131.15753940834696,538.5073594140326) " id="svg_25"/>
+   <ellipse stroke="#000000" fill="#fcdbcf" stroke-width="0" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" cx="206.58171" cy="140.34062" rx="31.90963" ry="9.0398" transform="matrix(2.803086104384004,-1.4224916539236592,1.4224916539236592,2.803086104384004,-187.55786874919087,399.8955613258336) " id="svg_26"/>
+   <ellipse stroke="#000000" fill="#fcdbcf" stroke-width="0" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" cx="226.96278" cy="125.13411" rx="7.98149" ry="5.58013" transform="matrix(3.0143674704425276,-0.8912704231663237,0.8912704231663237,3.0143674704425276,-111.9578578093276,281.5037297809672) " id="svg_27"/>
+   <path stroke="null" fill="#000000" stroke-width="0.5" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" d="m285.24238,422.42562c-4.71506,-33.00539 96.65861,-80.15593 110.80378,-66.01076" id="svg_30"/>
+   <path stroke="null" fill="#fcdbcf" stroke-width="0.5" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" d="m294.50769,428.30022c-5.06271,-33.91398 103.78585,-82.36249 118.97404,-67.82791" id="svg_32"/>
+   <path stroke="null" fill="#000000" stroke-width="0.5" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" d="m615.6823,288.7072c0.03198,-35.65432 107.22477,-72.19614 119.22757,-55.30157" id="svg_35"/>
+   <path stroke="null" fill="#fcdbcf" stroke-width="0.5" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" d="m624.02767,296.17507c-0.18308,-36.66483 114.60308,-73.58892 127.5841,-56.14228" id="svg_36"/>
+   <ellipse stroke="#000000" transform="matrix(2.6959366131242914,-1.6163848527158031,1.6163848527158031,2.6959366131242914,-243.75532940837357,509.83467376791293) " ry="25.33334" rx="42" id="svg_18" cy="172.79192" cx="233.53248" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="2" fill="url(#svg_2)"/>
+   <ellipse stroke="#000000" transform="matrix(2.832571214689811,1.362833272188439,-1.362833272188439,2.832571214689811,380.3919994893862,-126.2903297776094) " ry="5.1824" rx="2.59442" id="svg_19" cy="184.77504" cx="156.90243" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="0.5" fill="#ffffff" filter="url(#svg_19_blur)"/>
+   <path stroke="null" id="svg_31" fill="#000000" stroke-width="0.5" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" d="m559.47239,522.06749c-3.67618,-24.64577 75.36167,-59.85404 86.39017,-49.29156"/>
+   <path stroke="null" id="svg_37" fill="#fcdbcf" stroke-width="0.5" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" d="m566.69628,526.45419c-3.94724,-25.32424 80.91851,-61.50174 92.76029,-50.64846"/>
+   <path stroke="#000000" fill="#ffffff" stroke-width="2" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" d="m542.60547,884.47012c38.75241,-4.24954 419.7374,-195.31882 418.269,-235.87588c-1.4684,-40.55706 -72.42014,160.66412 -85.10432,181.99453c-12.6842,21.33038 -56.85955,42.11846 -88.40642,53.67117c-31.54689,11.55276 -244.75824,0.2102 -244.75824,0.2102c0,0 -38.75241,4.24954 0,-0.00002l-0.00002,0z" id="svg_28"/>
+   <path stroke="#000000" id="svg_47" d="m721.13166,885.40037c-6.81916,-2.62158 100.06149,-53.70985 164.76256,-86.51881c-7.60762,27.05722 -9.30865,20.67696 -14.80646,34.93266c-5.49782,14.25569 -76.58496,47.18522 -91.6742,49.38807c-15.08924,2.20283 -51.46271,4.81966 -58.28189,2.1981l0,-0.00002z" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="0" fill="#ededed"/>
+   <path stroke="#000000" stroke-width="2" id="svg_50" d="m707.17413,928.60645c24.69683,-8.71376 68.58387,2.56236 85.19676,-2.08985c16.61289,-4.65218 23.73272,-15.66482 33.22583,-22.6431c9.49311,-6.97828 25.71667,-14.31092 35.20973,-18.9631c9.49311,-4.65218 15.59312,-2.82586 36.9526,-16.78242c21.35946,-13.95656 9.46528,-46.4038 23.10228,-61.83231" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" fill="none"/>
+   <ellipse stroke="#000000" filter="url(#svg_51_blur)" opacity="0.1" ry="81.72764" rx="85.91876" id="svg_51" cy="853.85312" cx="464.28342" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="0" fill="#ff0000"/>
+   <ellipse stroke="#000000" id="svg_52" filter="url(#svg_51_blur)" opacity="0.1" ry="81.72764" rx="85.91876" cy="594.0012" cx="983.98724" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="0" fill="#ff0000"/>
+  </g>
+ </g>
+</svg>

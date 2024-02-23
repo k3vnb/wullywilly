@@ -8,4 +8,5 @@ Based on the classic game [Wooly Willy](https://www.google.com/search?q=wooly+wi
 - Built with `p5.js`, `webpack`, `TypeScript`, and mostly vanilla HTML/CSS and JavaScript. 
 
 
-![screenshot](ww_screenshot.png | width=300)
+
+<img src="ww_screenshot.png" alt="screenshot" width="200"/>

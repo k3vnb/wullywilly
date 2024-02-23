@@ -67,8 +67,8 @@ h1 {
 }
 
 .p5Loading {
-  max-width: 580px;
-  max-height: 580px;
+  max-width: 500px;
+  max-height: 500px;
   width: calc(100vw - 20px);
   height: calc(100vw - 20px);
   display: flex;

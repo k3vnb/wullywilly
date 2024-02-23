@@ -20,26 +20,31 @@ export const sketch = (p: p5) => {
   let canvasEl: HTMLCanvasElement | null;
   let toggleEl: HTMLElement | null;
   let resetButtonEl: HTMLButtonElement | null;
+  let imgWidth: number;
+  let imgOffset: number;
 
   p.preload = () => {
     bg = p.loadImage('./assets/woolywilly.svg');
   };
 
-  const drawBackground = () => {
+  function setImageSize(){
+    imgWidth = p.round(p.width * IMG_SCALE);
+    imgOffset = p.round(IMG_OFFSET_X * IMG_SCALE);
+  }
+
+  function drawBackground(){
     p.background(WHITE);
     p.imageMode(p.CENTER);
-    const width = p.round(p.width * IMG_SCALE);
-    const offset = p.round(IMG_OFFSET_X * IMG_SCALE);
 
-    if (bg) p.image(bg, offset, offset, width, width);
-  };
+    if (bg) p.image(bg, imgOffset, imgOffset, imgWidth, imgWidth);
+  }
 
-  const createQuadtree = () => {
+  function createQuadtree(){
     const boundary = new Rectangle(-p.width/2, -p.height/2, p.width, p.height);
     qtree = new QuadTree(boundary, p);
-  };
+  }
 
-  const toggleEraseMode = (eraseModeOn: boolean) => {
+  function toggleEraseMode(eraseModeOn: boolean){
     isEraseMode = eraseModeOn;
     if (isEraseMode) {
       toggleEl.classList.add('activeRight');
@@ -48,9 +53,9 @@ export const sketch = (p: p5) => {
       toggleEl.classList.remove('activeRight');
       canvasEl.classList.remove('eraseMode');
     }
-  };
+  }
 
-  const initControls = () => {
+  function initControls(){
     // html widgets outside the p5 canvas
     const toggleForm = document.getElementById('draw-mode-toggle');
 
@@ -79,19 +84,15 @@ export const sketch = (p: p5) => {
 
     const h1 = document.querySelector('h1');
     h1.classList.add('fadeIn');
-  };
+  }
 
   p.setup = () => {
     // init canvas
     const width = Math.min(p.windowWidth - CANVAS_MARGIN_X, CANVAS_MAX_WIDTH);
     p.createCanvas(width, width, p.WEBGL);
     canvasEl = document.querySelector('canvas');
-
-    // init background & draw a semi-transparent white rectangle to fade in the background
-    p.fill('#ffffff20');
-    p.rect(0, 0, p.width, p.height);
+    setImageSize();
     drawBackground();
-    p.noFill();
 
     // create quadtree data structure for efficient collision detection
     createQuadtree();
@@ -100,10 +101,11 @@ export const sketch = (p: p5) => {
     initControls();
   };
 
-  p.windowResized = () => {
+  p.windowResized = function resizeSketch() {
     const prevWidth = p.width;
     const newWidth = Math.min(p.windowWidth - CANVAS_MARGIN_X, CANVAS_MAX_WIDTH);
     p.resizeCanvas(newWidth, newWidth, true);
+    setImageSize();
 
     createQuadtree();
 
@@ -121,22 +123,22 @@ export const sketch = (p: p5) => {
     p.redraw();
   };
 
-  const eraseAtMousePos = (x: number, y: number) => {
+  function eraseAtMousePos(x: number, y: number){
     p.loop();
     const didEraseShapes = qtree.findAndEraseShapes(x, y);
     if (didEraseShapes) shouldCleanUp = true;
-  };
+  }
 
-  const drawAtMousePos = () => {
+  function drawAtMousePos(){
     const [x, y] = getRealMouseCoords(p);
 
     if (isEraseMode) return eraseAtMousePos(x, y);
 
     const doodleShape = qtree.createShape(x, y);
     if (doodleShape) shapesCache.push(doodleShape);
-  };
+  }
 
-  const cleanup = () => {
+  function cleanup(){
     // remove hidden shapes from cache & quadtree for better performance
     const prevShapesCount = shapesCache.length;
     shapesCache = shapesCache.filter((shape) => !shape.isHidden);
@@ -150,7 +152,7 @@ export const sketch = (p: p5) => {
 
     shouldCleanUp = false;
     p.redraw();
-  };
+  }
 
   p.mouseDragged = drawAtMousePos;
 

@@ -29,9 +29,28 @@ export function getShadeOfGray({ min = 0, max = 25, p }: IGetShadeOfGray) {
 
 const SMALL_OFFSET = 0.1; // non-zero small number
 
+const cacheX: number[] = [];
+const cacheY: number[] = [];
+let cachedIdx = 0;
+
+function getRandom(min: number, max: number, cache: number[], p: p5) {
+  if (cache.length < 900) {
+    const val = getRandomInt({ min, max, p });
+    cache.push(val);
+    return val;
+  }
+  const idx = cachedIdx++ % cache.length;
+  return cache[idx];
+}
+
 export function generateClockwiseVertices ({ x, y, p }: IGenerateClockwiseVertices){
-  const getXVal = (): number => getRandomInt({ min: 0, max: 4, p }) + SMALL_OFFSET;
-  const getYVal = (): number => getRandomInt({ min: 1, max: 10, p });
+  function getXVal(){
+    return getRandom(0, 4, cacheX, p) + SMALL_OFFSET;
+  }
+
+  function getYVal(){
+    return getRandom(1, 10, cacheY, p);
+  }
 
   const v1 = [x - getXVal(), y - getYVal()];
   const v2 = [x + getXVal(), y - getYVal()];

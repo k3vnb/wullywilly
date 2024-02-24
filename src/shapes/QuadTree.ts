@@ -1,7 +1,7 @@
 import { DoodleShape } from './DoodleShape';
 import { HOVER_THRESHOLD, IS_DEBUG_MODE } from '../constants';
 
-const QUAD_CAPACITY = 20; // max number of shapes in a quad
+const QUAD_CAPACITY = 12; // max number of shapes in a quad
 const MIN_QUAD_SIZE = 12; // minimum size of a quad
 
 export class Rectangle {
@@ -117,7 +117,7 @@ export class QuadTree {
     }
 
     for (const shape of this.shapes) {
-      if (range.contains(shape)) {
+      if (!shape.isHidden && (this.isMaxDepth() || range.contains(shape))) {
         shape.hide();
         foundShapes.push(shape);
       }

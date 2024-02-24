@@ -1,4 +1,4 @@
-export const CANVAS_MAX_WIDTH = 500;
+export const CANVAS_MAX_WIDTH = 480;
 export const CANVAS_MARGIN_X = 20;
 export const WHITE = 255;
 export const IMG_OFFSET_X = 4;

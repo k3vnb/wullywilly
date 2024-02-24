@@ -91,6 +91,7 @@ export const sketch = (p: p5) => {
     const width = Math.min(p.windowWidth - CANVAS_MARGIN_X, CANVAS_MAX_WIDTH);
     p.createCanvas(width, width, p.WEBGL);
     canvasEl = document.querySelector('canvas');
+    p.frameRate(45);
     setImageSize();
     drawBackground();
 
@@ -124,9 +125,11 @@ export const sketch = (p: p5) => {
   };
 
   function eraseAtMousePos(x: number, y: number){
-    p.loop();
     const didEraseShapes = qtree.findAndEraseShapes(x, y);
-    if (didEraseShapes) shouldCleanUp = true;
+    if (didEraseShapes) {
+      p.loop();
+      shouldCleanUp = true;
+    }
   }
 
   function drawAtMousePos(){

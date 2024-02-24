@@ -67,8 +67,8 @@ h1 {
 }
 
 .p5Loading {
-  max-width: 580px;
-  max-height: 580px;
+  max-width: 480px;
+  max-height: 480px;
   width: calc(100vw - 20px);
   height: calc(100vw - 20px);
   display: flex;
@@ -191,8 +191,8 @@ fieldset.radioToggle {
 }
 
 .controls {
-  max-width: 600px;
-  margin: 0 auto;
+  max-width: 500px;
+  margin: 10px auto;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
